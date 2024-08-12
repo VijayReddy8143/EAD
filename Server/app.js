@@ -1,25 +1,22 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
+const express = require('express')
+const mongoose = require('mongoose')
+const cors = require('cors')
+const empRouter =require('./controller/emp_data')
 
-const url = 'mongodb://localhost:27017';
+const url = 'mongodb://localhost:27017/CBITDB'
+const app = express()
+mongoose.connect(url)
+const con = mongoose.connection
 
-const app = express();
+con.on('open',()=>
+{
+    console.log('connected...')
+})
 
-mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
-const con = mongoose.connection;
+app.use(cors())
+app.use(express.json())
 
-con.on('open', () => {
-    console.log('connected...');
-});
-
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-const alienRouter = require('./Routes/aliens');
-app.use('/aliens', alienRouter);
-
-app.listen(9000, () => {
-    console.log('server started..');
+app.use('/emp_data',empRouter)
+app.listen(3000,()=>{
+    console.log('Server started')
 })

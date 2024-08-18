@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const empRouter =require('./controller/emp_data')
 
-const url = 'mongodb://localhost:27020,localhost:27021,localhost:27022/cbit2?replicaSet=m101';
+const url = 'mongodb://localhost:27017';
 const app = express()
 mongoose.connect(url)
 const con = mongoose.connection

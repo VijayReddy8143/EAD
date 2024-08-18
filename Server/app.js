@@ -3,6 +3,8 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const empRouter =require('./controller/emp_data')
 
+//url
+
 const url = 'mongodb://localhost:27017';
 const app = express()
 mongoose.connect(url)

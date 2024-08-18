@@ -5,7 +5,7 @@ const empRouter =require('./controller/emp_data')
 
 //url
 
-const url = 'mongodb://localhost:27017';
+const url = 'mmongodb://localhost:27020,localhost:27021,localhost:27022/cbit2?replicaSet=m101';
 const app = express()
 mongoose.connect(url)
 const con = mongoose.connection
